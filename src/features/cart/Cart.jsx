@@ -12,6 +12,7 @@ function Cart() {
 
   if (!cart.length) return <EmptyCart />;
 
+  
   return (
     <div className="px-4 py-3">
       <LinkButton
