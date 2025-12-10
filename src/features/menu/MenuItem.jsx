@@ -1,4 +1,4 @@
-import Button from "../../UI/Button";
+// import Button from "../../UI/Button";
 import { formatCurrency } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
@@ -53,11 +53,11 @@ function MenuItem({ pizza }) {
             </div>
           )}
 
-          {!soldOut && !isInCart && (
+          {/* {!soldOut && !isInCart && (
             <Button onClick={handleAddToCart} type="small">
               Add+
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </li>
