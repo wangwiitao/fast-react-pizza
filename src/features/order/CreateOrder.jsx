@@ -3,8 +3,8 @@ import {
   Form,
   redirect,
   useActionData,
-  // useNavigate,
-  // useNavigation,
+  useNavigate,
+  useNavigation,
 } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 // import Button from "../../UI/Button";
@@ -24,8 +24,8 @@ const isValidPhone = (str) =>
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
   // const cart = useSelector(getCart);
-  // const navigation = useNavigation();
-  // const isSubmitting = navigation.state === "submitting";
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
   const fromErrors = useActionData();
   // const {
   //   userName,
@@ -138,6 +138,13 @@ function CreateOrder() {
               ? "Placing order..."
               : `Order now from ${formatCurrency(totalPrice)}`}
           </Button> */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="inline-block rounded-full bg-yellow-400 px-4 py-3 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? "Placing order..." : "Order Now"}
+          </button>
         </div>
       </Form>
     </div>
@@ -145,8 +152,19 @@ function CreateOrder() {
 }
 
 export const action = async ({ request }) => {
+  debugger;
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
+
+  data.cart = JSON.stringify([
+    {
+      pizzaId: 12,
+      name: "Mediterranean",
+      quantity: 1,
+      unitPrice: 10,
+      totalPrice: 10,
+    },
+  ]);
 
   const order = {
     ...data,
