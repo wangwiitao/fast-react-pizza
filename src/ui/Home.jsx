@@ -1,10 +1,10 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CreateUser from "../features/user/CreateUser";
-// import Button from "./Button";
+import Button from "./Button";
 
 function Home() {
-  // const userName = useSelector((state) => state.user.userName);
-  const userName = '';
+  const userName = useSelector((state) => state.user.userName);
+  // const userName = '';
 
   return (
     <div className="my-10 px-4 text-center sm:my-16">
@@ -18,10 +18,10 @@ function Home() {
       {userName === "" ? (
         <CreateUser />
       ) : (
-        <p>xxx</p>
-        // <Button to={"/menu"} type={"primary"}>
-        //   Contunue ordering, {userName}
-        // </Button>
+        // <p>xxx</p>
+        <Button to={"/menu"} type={"primary"}>
+          Contunue ordering, {userName}
+        </Button>
       )}
     </div>
   );
