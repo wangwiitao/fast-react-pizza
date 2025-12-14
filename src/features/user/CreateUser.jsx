@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Button from "../../UI/Button";
+import Button from "../../UI/Button";
 // import { updateName } from "./userSlice";
 // import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
@@ -34,8 +34,8 @@ function CreateUser() {
 
       {username !== "" && (
         <div>
-          <button>submit</button>
-          {/* <Button type="primary">Start ordering</Button> */}
+          {/* <button>submit</button> */}
+          <Button type="primary">Start ordering</Button>
         </div>
       )}
     </form>
